@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>订单管理</title>
+    <th:block data-layout-fragment="stylesheets">
+        <link href="assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    </th:block>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">交易中心</a></li>
+                        <li class="breadcrumb-item active">订单管理</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">订单管理</h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="dataform" data-query="/trade-orders/query" class="row mt-2 mb-4">
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">订单状态</p>
+                            <select class="form-control formTradeStates" name="state"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">退款状态</p>
+                            <select class="form-control formRefundStates" name="refund"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">开始下单日期</p>
+                            <input type="text" class="form-control date" name="start" id="start" autocomplete="off">
+                        </div>
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">结束下单日期</p>
+                            <input type="text" class="form-control date" name="end" id="end" autocomplete="off">
+                        </div>
+
+                        <div class="col-md-12 row mt-2">
+                            <div class="col-md-3">
+                                <p class="font-weight-bold text-muted">关键字</p>
+                                <input class="form-control" name="keywords"/>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="font-weight-bold" style="color: #FFFFFF">-</p>
+                                <button type="button" class="btn btn-primary formSubmit">
+                                    <i class="dripicons-search mr-1"></i>搜索
+                                </button>
+                                <button type="button" class="btn btn-secondary formReset ml-1">
+                                    <i class="dripicons-trash mr-1"></i>清空
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <table id="datatable" class="table dt-responsive nowrap" data-query="#dataform" data-ajax-url="/trade-orders" width="100%">
+                        <thead>
+                            <tr>
+                                <th>快照</th>
+                                <th>标题</th>
+                                <th>订单号</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>总金额</th>
+                                <th>状态</th>
+                                <th>退款</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script src="/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            laydate.render({
+                elem: '#start'
+            });
+
+            laydate.render({
+                elem: '#end'
+            });
+
+            var app = WebTableApp('#datatable', [
+                { data: 'thumbnailUrl', width: '60px', className: 'text-center', render: function(data) {
+                    return '<img src="'+data+'!thumb_64'+'" style="width: auto; height: auto;max-width: 24px;max-height: 24px">'
+                }},
+                { data: 'title', className: 'text-center', render: function(data) {
+                    return '<div style="width: 100px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">'+data+'</div>'
+                }},
+                { data: 'tradeNo', width: '260px', className: 'text-center' },
+                { data: 'price', width: '80px', className: 'text-center' },
+                { data: 'quantity', width: '80px', className: 'text-center' },
+                { data: 'totalFee', width: '100px', className: 'text-center' },
+                { data: 'tradeState', width: '140px', render: function(data) {
+                    console.log(data)
+                    return {
+                        'WAIT_PAY': '<span class="badge badge-info-lighten" style="font-size: 13px">等待支付</span>',
+                        'WAIT_CONFIRM': '<span class="badge badge-warning-lighten" style="font-size: 13px">待发货</span>',
+                        'WAIT_FINISH': '<span class="badge badge-success" style="font-size: 13px">待收货</span>',
+                        'FINISH': '<span class="badge badge-secondary" style="font-size: 13px">已完成</span>',
+                        'CLOSE': '<span class="badge badge-light-lighten" style="font-size: 13px">已关闭</span>'
+                    }[data]
+                }},
+                { data: 'refundState', width: '140px', render: function(data) {
+                    return {
+                        'NONE': '<span class="badge badge-info-lighten" style="font-size: 13px">无退款</span>',
+                        'FULL_REFUNDING': '<span class="badge badge-warning-lighten" style="font-size: 13px">退款中</span>',
+                        'FULL_REFUNDED': '<span class="badge badge-warning-lighten" style="font-size: 13px">退款完成</span>'
+                    }[data]
+                }},
+                { data: 'id', width: '120px', className: 'text-center', render: function(data, type, row) {
+                    return '<button class="btn btn-sm btn-info tableDetail"  data-id="'+data+'">查看详情</button>' + '</div>'
+                }}
+            ]);
+
+
+            /**
+             * 查询表单事件
+             */
+
+            $('#dataform').on('click', '.formSubmit', function () {
+                app.search();
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+            /**
+             * 表格操作事件
+             */
+
+            $('#datatable').on('click', '.tableDetail', function () {
+                setTimeout(() => {
+                    location.href = '/order/' + $(this).data('id');
+                }, 500)
+            });
+        });
+    </script>
+</th:block>
+</html>

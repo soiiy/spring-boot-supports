@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>订单管理</title>
+    <style>
+        .WAIT_PAY .process-line {
+            width: 0 !important;
+        }
+        .WAIT_CONFIRM .process-line {
+            width: 33.333% !important;
+        }
+        .WAIT_FINISH .process-line {
+            width: 66.666% !important;
+        }
+        .FINISH .process-line {
+            width: 100% !important;
+        }
+        .CLOSE .process-line {
+            width: 100% !important;
+        }
+        .CLOSE .step-item:last-child {
+            color: #6c757d !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:class="'content '+${trade.tradeState}" data-layout-fragment="content">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">首页</a></li>
+                        <li class="breadcrumb-item"><a>交易中心</a></li>
+                        <li class="breadcrumb-item active">订单管理</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">订单管理&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-outline-success" href="/order"><i class="mdi mdi-arrow-left-circle-outline"></i>返回</a>
+                </h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-md-10 col-sm-11">
+
+            <div class="horizontal-steps mt-4 mb-4 pb-5">
+                <div class="horizontal-steps-content">
+                    <div th:class="'step-item '+${trade.tradeState=='WAIT_PAY'?'current':''}" class="step-item">
+                        <span data-toggle="tooltip" data-placement="bottom" th:data-original-title="${trade.createdAt}">订单创建</span>
+                    </div>
+                    <div th:class="'step-item '+${trade.tradeState=='WAIT_CONFIRM'?'current':''}">
+                        <span data-toggle="tooltip" data-placement="bottom" th:data-original-title="${trade.paymentAt}">支付成功</span>
+                    </div>
+                    <div th:class="'step-item '+${trade.tradeState=='WAIT_FINISH'?'current':''}">
+                        <span data-toggle="tooltip" data-placement="bottom" th:data-original-title="${trade.confirmAt}">物流发货</span>
+                    </div>
+                    <div th:class="'step-item '+${trade.tradeState=='FINISH'||trade.tradeState=='CLOSE'?'current':''}">
+                        <span data-toggle="tooltip" data-placement="bottom" th:data-original-title="${trade.updatedAt}" th:text="${trade.tradeState=='CLOSE'?'交易关闭':'交易完成'}">交易完成</span>
+                    </div>
+                </div>
+                <div class="process-line"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">商品快照</h4>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>名称</th>
+                                <th style="width: 80px">数量</th>
+                                <th style="width: 80px">单价</th>
+                                <th style="width: 80px">合计</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:text="${trade.title}"></td>
+                                <td th:text="${trade.quantity}">1</td>
+                                <td th:text="${trade.price}">0</td>
+                                <td th:text="${trade.totalFee}">0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">交易快照</h4>
+
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>属性</th>
+                                <th>值</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th>实付金额 :</th>
+                                <th th:text="${trade.totalAmount}">0</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table-responsive -->
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">收货信息</h4>
+                    <h5 th:text="${trade.extraInfo['userName']}"></h5>
+                    <address class="mb-0 font-14 address-lg">
+                        <abbr>地址 : </abbr> <span th:text="${trade.extraInfo['provinceName']+trade.extraInfo['cityName']+
+                        trade.extraInfo['countyName']+trade.extraInfo['detailInfo']}"></span><br>
+                        <abbr>电话 : </abbr> <span th:text="${trade.extraInfo['telNumber']}"></span>
+                    </address>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">物流信息</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <p class="mb-2"><span class="font-weight-bold mr-2">物流单号 :</span> <span th:text="${trade.extraDeliver?.serialNo}">-</span></p>
+                            <p class="mb-2"><span class="font-weight-bold mr-2">物流公司 :</span> <span th:text="${trade.extraDeliver?.channel}">其它物流</span></p>
+                            <p class="mb-2"><span class="font-weight-bold mr-2">当前状态 :</span> <span th:text="${trade.extraDeliver?.message}">未发货</span></p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">退款信息</h4>
+
+                    <div class="text-center">
+                        <i class="mdi mdi-truck-fast h2 text-muted"></i>
+                        <h5><b>退款状态</b></h5>
+                        <p class="mb-1"><b>退款金额 :</b> xxxx235</p>
+                        <p class="mb-0"><b>退款时间 :</b> COD</p>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+
+        <!-- Signup modal content -->
+        <div id="deliver-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" th:if="${trade.tradeState=='WAIT_CONFIRM'}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="fullWidthModalLabel">物流发货</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="dataform" class="pl-3 pr-3" action="#">
+                            <input type="hidden" id="formId" th:value="${trade.id}">
+                            <input type="hidden" name="message" value="开始配送">
+                            <div class="form-group">
+                                <label>物流类型</label>
+                                <select class="form-control custom-select" name="channel">
+                                    <option value="other">其它配送</option>
+                                    <option value="ems">邮政速递</option>
+                                    <option value="sto">申通快递</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>快递单号</label>
+                                <input class="form-control" name="serialNo">
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary formSubmit" type="button">确认发货</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="col-md-12" style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deliver-modal" th:if="${trade.tradeState=='WAIT_CONFIRM'}">
+                <i class="dripicons-search mr-1"></i>订单发货
+            </button>
+            <button type="button" id="tradeClose" class="btn btn-secondary formReset ml-1" th:data-id="${trade.id}" th:if="${trade.tradeState=='WAIT_PAY'}">
+                <i class="dripicons-trash mr-1"></i>关闭订单
+            </button>
+            <button type="button" id="tradeRefund" class="btn btn-secondary formReset ml-1" th:data-id="${trade.id}" th:if="${trade.tradeState=='WAIT_CONFIRM'||trade.tradeState=='WAIT_FINISH'}">
+                <i class="dripicons-trash mr-1"></i>整单退款
+            </button>
+        </div>
+    </div>
+    <!-- end row -->
+
+
+</div> <!-- content -->
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script>
+        $(document).ready(function () {
+
+            var app = WebFormApp('#dataform');
+
+            $('#deliver-modal').on('click', '.formSubmit', function () {
+                var formId = $('#formId').val();
+                var submit = app.submit();
+                AjaxPut('/trade-orders/' + formId + '/deliver',submit,function (data) {
+                    app.notifyOk('操作成功！');
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 500);
+                });
+            });
+
+            $('#tradeClose').on('click', function () {
+                var formId = $(this).data('id');
+                AjaxPut('/trade-orders/' + formId + '/cancel', {}, function (data) {
+                    app.notifyOk('操作成功！');
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 500);
+                });
+            })
+
+            $('#tradeRefund').on('click', function () {
+                var formId = $(this).data('id');
+                AjaxPut('/trade-orders/' + formId + '/refund', {}, function (data) {
+                    app.notifyOk('操作成功！');
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 500);
+                });
+            })
+
+        });
+
+
+    </script>
+</th:block>
+</html>

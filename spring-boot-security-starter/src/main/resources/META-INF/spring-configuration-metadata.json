@@ -1,0 +1,67 @@
+{
+  "groups": [
+    {
+      "name": "spring.security",
+      "type": "com.soiiy.security.config.SecurityContextProperty",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.security.sso",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "false",
+      "description": "是否启动单点登陆"
+    },
+    {
+      "name": "spring.security.expire-day",
+      "type": "java.lang.Long",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": 90,
+      "description": "过期时间(天)"
+    },
+    {
+      "name": "spring.security.mode",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "Memory",
+      "description": "存储方式,可选：Memory、Redis"
+    },
+    {
+      "name": "spring.security.key-name",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "SecurityAuthorization",
+      "description": "自定义存储键名：Header、Cookie"
+    },
+    {
+      "name": "spring.security.target",
+      "type": "java.lang.Class",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": null
+    },
+    {
+      "name": "spring.security.permit-urls",
+      "type": "java.util.List",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "/,/auth/**",
+      "description": "路由白名单"
+    },
+    {
+      "name": "spring.security.redirect-401",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "/401",
+      "description": "未认证时跳转地址！"
+    },
+    {
+      "name": "spring.security.redirect-403",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.security.config.SecurityContextProperty",
+      "defaultValue": "/403",
+      "description": "未授权时跳转地址！"
+    }
+  ],
+  "hints": []
+}

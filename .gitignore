@@ -1,0 +1,7 @@
+!.gitignore
+**/build
+**/out
+**/.**
+**.iws
+**.iml
+**.ipr

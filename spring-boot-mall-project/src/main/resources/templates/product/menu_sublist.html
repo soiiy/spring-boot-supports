@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>商品分类</title>
+    <th:block data-layout-fragment="stylesheets">
+        <link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    </th:block>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">产品中心</a></li>
+                        <li class="breadcrumb-item active">分类管理</li>
+                    </ol>
+                </div>
+                <h4 class="page-title" th:text="${item.name}">商品分类</h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mt-2 mb-4">
+                        <div class="col-12">
+                            <a class="btn btn-primary" th:href="'/product-menu/'+${item.id}+'/create'"><i class="dripicons-plus"></i>新增子分类</a>
+                        </div>
+                    </div>
+
+                    <table id="datatable" class="table dt-responsive nowrap" th:data-ajax-url="'/product-menus/'+${id}+'/sublist'" width="100%">
+                        <thead>
+                            <tr>
+                                <th>展示图片</th>
+                                <th>分类名称</th>
+                                <th>排序号</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script src="/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var app = WebTableApp('#datatable', [
+                { data: 'firstPicUrl', width: '60px', className: 'text-center',  render: function(data) {
+                    return '<img src="'+data+'!thumb_64'+'" style="width: auto;height: auto;max-width: 24px;max-height: 24px">'
+                }},
+                { data: 'name', width: '160px', className: 'text-center' },
+                { data: 'rankNum', width: '160px', className: 'text-center' },
+                { data: 'id', width: '180px', className: 'text-center', render: function(data, type, row) {
+                    return '<button class="btn btn-sm btn-outline-warning tableEdit" data-id="'+data+'">编辑</button>';
+                }}
+            ]);
+
+
+            $('#datatable').on('click', '.tableEdit', function () {
+                var id = $(this).data('id');
+                setTimeout(function () {
+                    location.href = '/product-menu/' + id+ '/edit';
+                }, 500);
+            });
+
+        });
+    </script>
+</th:block>
+</html>

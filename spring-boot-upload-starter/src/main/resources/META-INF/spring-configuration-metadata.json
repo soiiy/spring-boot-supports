@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "spring.upload",
+      "type": "com.soiiy.upload.UploadProperties",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.upload.access",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    },
+    {
+      "name": "spring.upload.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    },
+    {
+      "name": "spring.upload.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    },
+    {
+      "name": "spring.upload.bucket",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    },
+    {
+      "name": "spring.upload.cdn",
+      "type": "java.lang.String",
+      "sourceType": "com.soiiy.upload.UploadProperties"
+    }
+  ],
+  "hints": []
+}

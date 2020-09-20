@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>套餐管理</title>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">首页</a></li>
+                        <li class="breadcrumb-item"><a href="/user">产品中心</a></li>
+                        <li class="breadcrumb-item active">新增套餐</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">新增套餐&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-outline-success" href="/item"><i class="mdi mdi-arrow-left-circle-outline"></i>返回</a>
+                </h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="card">
+        <div class="card-body" style="padding: 100px 50px">
+            <form id="dataform" data-query="/product-items/create" class="form-horizontal row">
+
+                <div class="col-md-6">
+
+                    <input  class="form-control" type="hidden" name="test">
+                    <div class="form-group row mb-3">
+                        <label class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>套餐名称</label>
+                        <div class="col-8">
+                            <input  class="form-control" name="title" id="title">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label  class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>套餐价格</label>
+                        <div class="col-8">
+                            <input  class="form-control" name="price" id="price">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label  class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>套餐内容</label>
+                        <div class="col-8">
+                            <textarea class="form-control" rows="3" name="detailInfo" id="detailInfo"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div id="pic" style="width: 260px; height: 200px; margin: auto;"></div>
+                    <!--                                        <input type="hidden" name="avatarUrl" value="https://mall.pic.soiiy.com/user_1/20191222/1328-935574">-->
+                    <input type="hidden" name="firstPicUrl">
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="form-group row mb-3">
+
+                        <label  class="col-2 col-form-label" style="text-align: right" ><span class="text-danger">*</span>套餐原价</label>
+                        <div class="col-4">
+                            <input  class="form-control" name="originalPrice" id="originalPrice">
+                        </div>
+
+                        <label  class="col-2 col-form-label" style="text-align: right;margin-left: -30px" ><span class="text-danger">*</span>生成卷码数量</label>
+                        <div class="col-3">
+                            <input  class="form-control" name="ruleTicket" id="ruleTicket">
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="form-group row mb-3">
+
+                        <label  class="col-2 col-form-label" style="text-align: right" ><span class="text-danger">*</span>劵码有效天数</label>
+                        <div class="col-4">
+                            <input  class="form-control" name="ruleValidDay" id="ruleValidDay"  data-toggle="input-mask" data-mask-format="000">
+                        </div>
+
+                        <label  class="col-2 col-form-label" style="text-align: right;margin-left: -30px"><span class="text-danger">*</span>库存总量</label>
+                        <div class="col-3">
+                            <input  class="form-control" name="stockTotal" id="stockTotal">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="form-group row mb-3">
+
+                        <label  class="col-2 col-form-label" style="text-align: right" ><span class="text-danger">*</span>优惠卷生效时间</label>
+                        <div class="col-4">
+                            <input type="text" class="form-control"  name="ruleValidStart" id="ruleValidStart" autocomplete="off">
+                        </div>
+
+                    </div>
+
+                </div>
+
+<!--                <div class="col-md-12">-->
+
+<!--                    <div class="form-group row mb-3">-->
+
+<!--                        <label  class="col-2 col-form-label" style="text-align: right">除外日期</label>-->
+<!--                        <div class="col-4">-->
+<!--                            <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" id="ruleLimitDate" name="ruleLimitDate">-->
+<!--                                <option value="周一">周一</option>-->
+<!--                                <option value="周二">周二</option>-->
+<!--                                <option value="周三">周三</option>-->
+<!--                                <option value="周四">周四</option>-->
+<!--                                <option value="周五">周五</option>-->
+<!--                                <option value="周六">周六</option>-->
+<!--                                <option value="周日">周日</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
+<!--                        <label  class="col-2 col-form-label" style="text-align: right;margin-left: -30px">使用时间段</label>-->
+<!--                        <div class="col-3">-->
+<!--                            <input type="text" class="form-control"  name="ruleLimitTime" id="ruleLimitTime" autocomplete="off">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+
+                <div class="col-md-12">
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right">套餐相册</label>
+                        <div class="col-8">
+                            <div id="albumPicUrls" data-width="180px" data-height="100px" multiple="true"></div>
+                            <input type="hidden" name="albumPicUrls" id="albumPicUrl">
+                        </div>
+                    </div>
+                    <label  class="col-3 col-form-label" style="text-align: right;margin-left: 70px"><span class="text-danger">*</span>请上传两张以上照片，否则无法正常显示</label>
+                </div>
+
+
+                <div class="col-md-12">
+
+                    <div class="form-group row mb-3">
+
+                        <label  class="col-2 col-form-label" style="text-align: right" ><span class="text-danger">*</span>套餐状态</label>
+                        <div class="col-4">
+                            <select class="form-control formLimits" name="limitStatus" id="limitStatus">
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right">套餐说明信息</label>
+                        <div class="col-9">
+                            <textarea class="form-control" rows="3" name="ruleRemark"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4" style="margin-left: 40%">
+                    <button type="button" class="btn btn-primary formSubmit">
+                        <i class="dripicons-search mr-1"></i>提交
+                    </button>
+                    <button type="button" class="btn btn-secondary formReset ml-1">
+                        <i class="dripicons-trash mr-1"></i>清空
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="width:500px;height: 150px;"></div>
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script>
+        $(document).ready(function () {
+
+            laydate.render({
+                elem: '#ruleValidStart',type: 'datetime'
+                ,format: 'yyyy-MM-dd HH:mm:ss'
+            });
+            laydate.render({
+                elem: '#ruleValidEnd',type: 'datetime'
+            });
+            laydate.render({
+                elem: '#ruleLimitTime'
+                ,type: 'time'
+                ,range: true
+                ,format:'HH:mm'
+            });
+
+
+            var app = WebFormApp('#dataform');
+            WebUploader('#pic', {target: 'input[name="firstPicUrl"]',placeholder: '选择LOGO', preview: '!banner_1.8x2'});
+            WebUploader('#albumPicUrls', {target: 'input[name="albumPicUrls"]', placeholder: '选择上传', preview: '!banner_1.8x1'});
+
+            $('#dataform').on('click', '.formSubmit', function () {
+
+                if(($("#title").val()=="" || $("#price").val()=="" ||$("#detailInfo").val()==""
+                    || $("#originalPrice").val()=="" ||$('#ruleValidDay').val()=="" ||$('#stockTotal').val()=="" ||$('#ruleValidStart').val()==""
+                    || $('#limitStatus option:selected').val()=="" ||$('#ruleTicket').val()=="" )){
+                    app.notifyWarn("注意*为必填选项");
+                    return;
+                }
+
+                var submit = app.submit();
+
+                AjaxPost("/product-items/store",submit,function (data) {
+                    $.NotificationApp.send(null, '套餐创建成功，即将跳转！', "top-center", "rgba(0,0,0,0.2)", 'success');
+                    setTimeout(function () {
+                        window.location.href = '/item';
+                    }, 500);
+                });
+
+
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+        });
+
+
+    </script>
+</th:block>
+</html>

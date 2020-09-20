@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>后台页面 - 控制台 - 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <th:block data-layout-fragment="stylesheets"></th:block>
+</head>
+
+<body>
+
+<div class="navbar-custom topnav-navbar">
+    <div class="container-fluid">
+
+        <!-- LOGO -->
+        <a href="#" class="topnav-logo">
+            <span class="topnav-logo-lg" style="color: white;font-size: 16px">
+                商铺管理中心
+            </span>
+            <span class="topnav-logo-sm">
+                <img src="/assets/images/logo_sm.png" alt="" height="16">
+            </span>
+        </a>
+
+        <ul class="list-unstyled topbar-right-menu float-right mb-0 web-auth-info">
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                            <span class="account-user-avatar">
+                                <img src="/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            </span>
+                    <span>
+                                <span th:text="${security.name}" class="account-user-name" id="user"></span>
+                                <span class="account-position" id="mobile">系统管理账号</span>
+                            </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
+                    <!-- item-->
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">欢迎您 !</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="#" class="dropdown-item notify-item" id="userInfo">
+                        <i class="mdi mdi-account-circle mr-1"></i>
+                        <span>个人中心</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="#" class="dropdown-item notify-item" id="logout" onclick="userLogout()">
+                        <i class="mdi mdi-account-remove mr-1"></i>
+                        <span>退出登录</span>
+                    </a>
+
+                </div>
+            </li>
+
+        </ul>
+        <a class="button-menu-mobile disable-btn">
+            <div class="lines">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="wrapper">
+
+        <div class="left-side-menu">
+
+            <div style="height: 25px"></div>
+
+            <ul class="metismenu side-nav">
+                <li class="side-nav-title side-nav-item">控制台</li>
+                <li class="side-nav-item">
+                    <a href="/" class="side-nav-link" id="operator">
+                        <i class="dripicons-monitor"></i>
+                        <span> 经营总览 </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-title side-nav-item">商品中心</li>
+                <li class="side-nav-item">
+                    <a href="/product-item" class="side-nav-link">
+                        <i class="dripicons-cart"></i>
+                        <span> 商品管理 </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/product-menu" class="side-nav-link">
+                        <i class="dripicons-list"></i>
+                        <span> 分类管理 </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="/product-topic" class="side-nav-link">
+                        <i class="dripicons-thumbs-up"></i>
+                        <span> 专题管理 </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-title side-nav-item" id="wx">页面中心</li>
+                <li class="side-nav-item" id="category">
+                    <a href="/page-banner" class="side-nav-link">
+                        <i class="dripicons-photo-group"></i>
+                        <span> 轮播图 </span>
+                    </a>
+                </li>
+                <li class="side-nav-item" id="banner">
+                    <a href="/page-menu" class="side-nav-link">
+                        <i class="dripicons-duplicate"></i>
+                        <span> 推荐菜单 </span>
+                    </a>
+                </li>
+                <li class="side-nav-item" id="radio">
+                    <a href="/page-radio" class="side-nav-link">
+                        <i class="dripicons-broadcast"></i>
+                        <span> 消息广播 </span>
+                    </a>
+                </li>
+
+
+<!--                <li class="side-nav-title side-nav-item" id="product">营销中心</li>-->
+<!--                <li class="side-nav-item" id="coupon">-->
+<!--                    <a href="/coupon" class="side-nav-link">-->
+<!--                        <i class="dripicons-ticket"></i>-->
+<!--                        <span> 优惠卷管理 </span>-->
+<!--                    </a>-->
+<!--                </li>-->
+
+                <li class="side-nav-title side-nav-item">交易中心</li>
+                <li class="side-nav-item">
+                    <a href="/order" class="side-nav-link">
+                        <i class="dripicons-to-do"></i>
+                        <span> 全部订单 </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="clearfix"></div>
+            <!-- Sidebar -left -->
+
+        </div>
+
+        <div class="content-page">
+
+            <th:block data-layout-fragment="content"></th:block>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="rightbar-overlay"></div>
+
+</body>
+
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/js/vendor/jquery.ui.widget.js"></script>
+<script src="/assets/js/vendor/jquery.fileupload.js"></script>
+<script th:src="'/assets/js/main.js?v=' + ${new java.util.Date().getTime()}"></script>
+<script src="/laydate/laydate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.6.12/apexcharts.min.js"></script>
+<script src="/assets/js/ui/component.todo.js"></script>
+<script src="/assets/js/pages/demo.dashboard-crm.js"></script>
+<th:block data-layout-fragment="scripts"></th:block>
+</html>

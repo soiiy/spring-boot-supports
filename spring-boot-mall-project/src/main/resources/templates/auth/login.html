@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>系统登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="auth-fluid-pages pb-0">
+
+<div class="auth-fluid" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end">
+    <!--Auth fluid left content -->
+    <div class="auth-fluid-form-box" style="height: 400px; width:420px; margin-right: 80px">
+        <div class="align-items-center d-flex h-100">
+            <div class="card-body">
+
+                <!-- form -->
+                <form id="dataForm">
+                    <h3 style="color: #727cf5; font-size: 26px; font-weight: 800; text-align: center">ADMIN</h3>
+                    <p class="text-muted" style="text-align: center; margin: 10px 0">使用账号密码登陆系统.</p>
+                    <div class="form-group">
+                        <label>账号：</label>
+                        <input name="username" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>密码：</label>
+                        <input name="password" class="form-control" type="text">
+                    </div>
+                    <div class="form-group mt-3 text-center">
+                        <button class="btn btn-primary btn-block formSubmit" type="button"><i class="mdi mdi-login"></i> 登   录 </button>
+                    </div>
+                </form>
+                <!-- end form-->
+
+            </div> <!-- end .card-body -->
+        </div> <!-- end .align-items-center.d-flex.h-100-->
+    </div>
+    <!-- end auth-fluid-form-box-->
+
+</div>
+<!-- end auth-fluid-->
+</body>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        var app = WebFormApp('#dataForm');
+
+        $('#dataForm').on('click', '.formSubmit', function () {
+            var submit = app.submit();
+
+            AjaxPost("/admin-auth/login", submit, function (data) {
+                app.notifyOk('登陆成功，即将跳转！')
+                setTimeout(function () {
+                    window.location.href = '/';
+                }, 500);
+            });
+        });
+    });
+</script>
+
+</html>

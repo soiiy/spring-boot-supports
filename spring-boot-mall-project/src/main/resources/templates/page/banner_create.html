@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>轮播图管理</title>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">首页</a></li>
+                        <li class="breadcrumb-item"><a>页面中心</a></li>
+                        <li class="breadcrumb-item active">轮播图管理</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">新增轮播图&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-outline-success" href="/page-banner"><i class="mdi mdi-arrow-left-circle-outline"></i>返回</a>
+                </h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="card">
+        <div class="card-body" style="padding: 100px 50px">
+            <form id="dataform" class="form-horizontal row">
+                <div class="col-md-12">
+                    <input  class="form-control" type="hidden" name="test">
+                    <div class="form-group row mb-3">
+                        <label class="col-2 col-form-label" style="text-align: right"><span class="text-danger">*</span> 名称</label>
+                        <div class="col-5">
+                            <input  class="form-control" name="name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right"><span class="text-danger">*</span> 跳转链接</label>
+                        <div class="col-5">
+                            <input  class="form-control" name="target">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right"><span class="text-danger">*</span> 排序号</label>
+                        <div class="col-5">
+                            <input  class="form-control" name="rankNum">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right"><span class="text-danger">*</span> 轮播图片</label>
+                        <div class="col-10">
+                            <div id="picUrl" data-width="180px" data-height="100px"></div>
+                            <input type="hidden" name="picUrl">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="margin-left: 40%">
+                    <button type="button" class="btn btn-primary formSubmit">
+                        <i class="dripicons-search mr-1"></i>提交
+                    </button>
+                    <button type="button" class="btn btn-secondary formReset ml-1">
+                        <i class="dripicons-trash mr-1"></i>清空
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="width: 500px; height: 150px;"></div>
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script>
+        $(document).ready(function () {
+
+            var app = WebFormApp('#dataform');
+            WebUploader('#picUrl', {target: 'input[name="picUrl"]',placeholder: '选择图片', previewStyle: '!banner_1.8x1'});
+
+            $('#dataform').on('click', '.formSubmit', function () {
+
+                var submit = app.submit();
+
+                AjaxPost("/page-banners",submit,function (data) {
+                    app.notifyOk('创建成功，即将跳转！');
+                    setTimeout(function () {
+                        window.location.href = '/page-banner';
+                    }, 500);
+                });
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+        });
+
+
+    </script>
+</th:block>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>财务分析</title>
+    <th:block data-layout-fragment="stylesheets">
+        <link href="assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    </th:block>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">财务管理</a></li>
+                        <li class="breadcrumb-item active">财务分析</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">财务分析</h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="dataform"  class="row mt-2 mb-4">
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">开始时间</p>
+                            <input type="text" class="form-control" name="start" id="start"  autocomplete="off" style="width: 270px">
+                        </div>
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">结束时间</p>
+                            <input type="text" class="form-control" name="end" id="end"   autocomplete="off" style="width: 270px" >
+                        </div>
+
+                        <div class="col-md-7">
+                            <p class="font-weight-bold text-muted" style="color: #FFFFFF">-</p>
+                            <button type="button" class="btn btn-primary formSubmit">
+                                <i class="dripicons-search mr-1"></i>搜索
+                            </button>
+                            <button type="button" class="btn btn-secondary formReset ml-1">
+                                <i class="dripicons-trash mr-1"></i>清空
+                            </button>
+<!--                            href="/exports/report"-->
+<!--                            href="/exports/order"-->
+                            <a class="btn btn-primary" onclick="orderExport()" href="#" ><i class="dripicons-document-remove"></i>下载订单明细</a>
+                            <a class="btn btn-danger" onclick="detailExport()" href="#" ><i class="dripicons-plus"></i>下载报表</a>
+                            <a class="btn btn-info" onclick="dayExport()" href="#" ><i class="dripicons-plus"></i>下载日报表</a>
+                        </div>
+                    </form>
+
+                    <table id="datatable" class="table dt-responsive nowrap" data-query="#dataform" data-ajax-url="/trade-report" width="100%">
+                        <thead>
+                            <tr>
+                                <!--<th>日期</th>-->
+                                <th>店铺</th>
+<!--                                <th>网点</th>-->
+                                <th>交易总额</th>
+                                <th>退款金额</th>
+                                <!--<th>交易总数</th>
+                                <th>支付宝交易额</th>
+                                <th>支付宝交易总数</th>
+                                <th>微信交易额</th>
+                                <th>微信交易总数</th>
+                                <th>储值卡交易额</th>
+                                <th>储值卡交易总数</th>-->
+<!--                                <th>支出金额</th>-->
+                                <!--<th>查看详情</th>-->
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script src="/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            laydate.render({
+                elem: '#start'
+            });
+
+            laydate.render({
+                elem: '#end'
+            });
+
+            var app = WebTableApp('#datatable', [
+                // { data: 'reportAt' },
+                // { data: 'paymentTotalFee' },
+                // { data: 'paymentTotalCount' },
+                // { data: 'paymentAlipayFee' },
+                // { data: 'paymentAlipayCount' },
+                // { data: 'paymentWechatFee' },
+                // { data: 'paymentWechatCount' },
+                // { data: 'paymentAlipayFee' },
+                // { data: 'paymentAlipayCount' },
+                { data: 'storeName' },
+                // { data: 'marketName' },
+                { data: 'totalFee' },
+                { data: 'refundFee' }
+                // { data: 'id', width: '120px', className: 'text-center', render: function(data, type, row, meta) {
+                //         return '<div class="btn-group">' +
+                //             '<button class="btn btn-sm btn-warning tableInfo" data-id="'+data+'">查看详情</button>' +
+                //             '</div>';
+                //     }}
+            ]);
+
+
+            /**
+             * 查询表单事件
+             */
+
+            $('#dataform').on('click', '.formSubmit', function () {
+                app.search();
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+            /**
+             * 表格操作事件
+             */
+
+            $('#datatable').on('click', '.tableInfo', function () {
+                var id = $(this).data('id');
+                setTimeout(function () {
+                    location.href = '/market/' + id+ '/edit';
+                }, 500);
+            });
+        });
+
+        // var SecurityGrantKey     = 'apply_grant_admin_key';
+        // var SecurityGrant = localStorage.getItem(SecurityGrantKey);
+        //
+        // var AuthenticationKey     = 'apply_auth_admin_key';
+        // var Authentication = localStorage.getItem(AuthenticationKey);
+
+
+
+        function detailExport() {
+            var param = {"start":$('#start').val(),"end":$('#end').val()}
+            AjaxExportReport(param)
+            // debugger;
+            // AjaxGet("/exports/report",function (data) {
+            //     if(data != null){
+            //         var url = 'export/report?start'+$('#start').val()+'&end'+$('#end').val() + '&grantType' + data.grantType + '&grantId' + data.grantId
+            //         window.open(url);
+            //     }
+            // });
+        }
+
+        function orderExport() {
+            var param = {"start":$('#start').val(),"end":$('#end').val()}
+            AjaxExportOrder(param)
+            // debugger;
+            // AjaxGet("/exports/order",function (data) {
+            //     if(data != null){
+            //         var url = 'export/report?start'+$('#start').val()+'&end'+$('#end').val() + '&grantType' + data.grantType + '&grantId' + data.grantId
+            //         window.open(url);
+            //     }
+            // });
+        }
+
+        function dayExport() {
+            var param = {"start":$('#start').val(),"end":$('#end').val()}
+            AjaxExportDayReport(param)
+        }
+
+        
+    </script>
+</th:block>
+</html>

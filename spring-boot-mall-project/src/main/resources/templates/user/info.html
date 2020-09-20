@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>用户管理</title>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">首页</a></li>
+                        <li class="breadcrumb-item"><a href="/user">用户管理</a></li>
+                        <li class="breadcrumb-item active">个人中心</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">个人中心 &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-outline-success" href="/user"><i class="mdi mdi-arrow-left-circle-outline"></i>返回</a>
+                </h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="card">
+        <div class="card-body" style="padding: 100px 50px">
+            <form id="dataform" th:data-query="'/account-users/'+${id}+'/edit'" class="form-horizontal row">
+
+                <div class="col-md-6">
+                    <input type="hidden" name="id" id="id" th:value="${id}">
+                    <input  class="form-control" type="hidden" name="test">
+                    <div class="form-group row mb-3">
+                        <label class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>姓名</label>
+                        <div class="col-8">
+                            <input  class="form-control" name="name" id="name" maxlength="32">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label  class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>性别</label>
+                        <div class="col-8">
+                            <select class="form-control formSex" name="sex" id="sex" disabled></select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-3">
+                        <label  class="col-4 col-form-label" style="text-align: right"><span class="text-danger">*</span>角色</label>
+                        <div class="col-8">
+                            <select class="form-control formRoles" name="role" id="role" disabled></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div id="pic" style="width: 150px; height: 150px; margin: auto;"></div>
+                    <!--                                        <input type="hidden" name="avatarUrl" value="https://mall.pic.soiiy.com/user_1/20191222/1328-935574">-->
+                    <input type="hidden" name="avatarUrl" id="avatarUrl">
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="form-group row mb-3">
+                        <label  class="col-2 col-form-label" style="text-align: right" ><span class="text-danger">*</span>手机号</label>
+                        <div class="col-4">
+                            <input  class="form-control" name="mobile" maxlength="11" id="mobile" data-toggle="input-mask" data-mask-format="00000000000" disabled>
+                        </div>
+                        <label  class="col-2 col-form-label" style="text-align: right;margin-left: -30px"><span class="text-danger">*</span>状态</label>
+                        <div class="col-3">
+                            <select class="form-control  formLimitStatus" name="limitStatus" id="limitStatus" disabled></select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4" style="margin-left: 40%">
+                    <button type="button" class="btn btn-primary formSubmit">
+                        <i class="dripicons-search mr-1"></i>提交
+                    </button>
+                    <button type="button" class="btn btn-secondary formReset ml-1">
+                        <i class="dripicons-trash mr-1"></i>清空
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="width:500px;height: 360px;"></div>
+</div>
+</body>
+<th:block data-layout-fragment="scripts">
+    <script>
+        $(document).ready(function () {
+
+            var app = WebFormApp('#dataform', {
+                onloaded: function () {
+                    WebUploader('#pic', {target: 'input[name="avatarUrl"]', color: '#f03', placeholder: '选择LOGO', preview: '!thumb_256'});
+                }
+            });
+
+            $('#dataform').on('click', '.formSubmit', function () {
+
+                var name = $("#name").val();
+                var id = $("#id").val();
+                var avatarUrl = $("#avatarUrl").val();
+
+                if( name=="" ) {
+                    app.notifyWarn("注意*为必填选项");
+                    return;
+                }
+
+                AjaxPut("/account-users/"+id+"/info",{
+                    "name":name,"avatarUrl":avatarUrl
+                },function (data) {
+                    $.NotificationApp.send(null, '用户修改成功，即将跳转！', "top-center", "rgba(0,0,0,0.2)", 'success');
+                    setTimeout(function () {
+                        window.location.href = '/user';
+                    }, 500);
+                })
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+        });
+    </script>
+</th:block>
+</html>

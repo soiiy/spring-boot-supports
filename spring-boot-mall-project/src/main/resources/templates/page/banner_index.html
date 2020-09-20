@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>轮播图管理</title>
+    <th:block data-layout-fragment="stylesheets">
+        <link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    </th:block>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">页面中心</a></li>
+                        <li class="breadcrumb-item active">轮播图</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">轮播图管理</h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="dataform" class="row mt-2 mb-4">
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">关键字</p>
+                            <input class="form-control" name="keywords"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="font-weight-bold" style="color:#FFF;">-</p>
+                            <button type="button" class="btn btn-primary formSubmit">
+                                <i class="dripicons-search mr-1"></i>搜索
+                            </button>
+                            <button type="button" class="btn btn-secondary formReset ml-1">
+                                <i class="dripicons-trash mr-1"></i>清空
+                            </button>
+                            <a class="btn btn-primary" href="/page-banner/create"><i class="dripicons-plus"></i>新增轮播</a>
+                        </div>
+                    </form>
+
+                    <table id="datatable" class="table dt-responsive nowrap" data-query="#dataform" data-ajax-url="/page-banners" width="100%">
+                        <thead>
+                            <tr>
+                                <th>展示图片</th>
+                                <th>名称</th>
+                                <th>排序号</th>
+                                <th>跳转路径</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script src="/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var app = WebTableApp('#datatable', [
+                { data: 'picUrl', width: '100px', className: 'text-center',  render: function(data) {
+                    return '<img src="'+data+'!banner_3.5x1'+'" style="width: auto;height: auto;max-width: 70px;max-height: 20px">'
+                }},
+                { data: 'name', className: 'text-center' },
+                { data: 'rankNum', width: '80px', className: 'text-center' },
+                { data: 'target', width: '200px', className: 'text-center' },
+                { data: 'id', width: '160px', className: 'text-center', render: function(data, type, row, meta) {
+                    return '<button class="btn btn-sm btn-outline-warning tableEdit" data-id="' + data + '">编辑</button>';
+                }}
+            ]);
+
+
+            /**
+             * 查询表单事件
+             */
+
+            $('#dataform').on('click', '.formSubmit', function () {
+                app.search();
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+            /**
+             * 表格操作事件
+             */
+
+            $('#datatable').on('click', '.tableEdit', function () {
+                var id = $(this).data('id');
+                setTimeout(function () {
+                    location.href = '/page-banner/' + id+ '/edit';
+                }, 500);
+            });
+        });
+    </script>
+</th:block>
+</html>

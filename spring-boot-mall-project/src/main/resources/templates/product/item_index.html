@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout_console.html}">
+
+<head>
+    <title>商品管理</title>
+    <th:block data-layout-fragment="stylesheets">
+        <link href="/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    </th:block>
+</head>
+
+<body>
+
+<div class="content" data-layout-fragment="content">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">首页</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">商品中心</a></li>
+                        <li class="breadcrumb-item active">商品管理</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">商品管理</h4>
+            </div> <!-- end page-title-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form id="dataform" data-query="/product-items/query" class="row mt-2 mb-4">
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">状态</p>
+                            <select class="form-control formSellStates" name="state"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">分类</p>
+                            <select class="form-control select2 formMenus" name="menu" data-repo-label="name"></select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p class="font-weight-bold text-muted">关键字</p>
+                            <input class="form-control" name="keywords"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="font-weight-bold" style="color:#FFF;">-</p>
+                            <button type="button" class="btn btn-primary formSubmit">
+                                <i class="dripicons-search mr-1"></i>搜索
+                            </button>
+                            <button type="button" class="btn btn-secondary formReset ml-1">
+                                <i class="dripicons-trash mr-1"></i>清空
+                            </button>
+                            <a class="btn btn-primary" href="/product-item/create"><i class="dripicons-plus"></i>新增商品</a>
+                        </div>
+                    </form>
+
+                    <table id="datatable" class="table dt-responsive nowrap" data-query="#dataform" data-ajax-url="/product-items" width="100%">
+                        <thead>
+                            <tr>
+                                <th>展示图片</th>
+                                <th>套餐名称</th>
+                                <th>套餐价格</th>
+                                <th>商品销量</th>
+                                <th>剩余库存</th>
+                                <th>标签</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<th:block data-layout-fragment="scripts">
+    <script src="/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="/assets/js/vendor/buttons.flash.min.js"></script>
+    <script src="/assets/js/vendor/buttons.print.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="/assets/js/vendor/dataTables.select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var app = WebTableApp('#datatable', [
+                { data: 'firstPicUrl', width: '60px', className: 'text-center',  render: function(data) {
+                    return '<img src="'+data+'!thumb_64'+'" style="width: auto;height: auto;max-width: 24px;max-height: 24px">'
+                }},
+                { data: 'title', className: 'text-center', render: function(data) {
+                    return '<div style="width: 160px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">'+data+'</div>'
+                }},
+                { data: 'price', width: '80px', className: 'text-center' },
+                { data: 'stockSold', width: '80px', className: 'text-center' },
+                { data: 'stockAvailable', width: '80px', className: 'text-center' },
+                { data: 'sellState',width: '80px', render: function(data) {
+                    return data === "NORMAL" ? '<span class="badge badge-success" style="font-size: 13px">销售中</span>' :
+                            '<span class="badge badge-danger" style="font-size: 13px">已下架</span>';
+                }},
+                { data: 'extraTags', width: '160px', className: 'text-center' },
+                { data: 'id', width: '160px', className: 'text-center', render: function(data, type, row, meta) {
+                    var options = [
+                        '<button class="btn btn-sm btn-outline-warning tableEdit" data-id="' + data + '">编辑</button>'
+                    ]
+                    if (row['sellState'] === "NORMAL") {
+                        options.unshift('<button class="btn btn-sm btn-outline-secondary tableSellDown" data-id="' + data + '">下架</button>')
+                    } else {
+                        options.unshift('<button class="btn btn-sm btn-outline-success tableSellUp" data-id="' + data + '">上架</button>')
+                    }
+                    return '<div class="btn-group">' + options.join('') + '</div>';
+                }}
+            ]);
+
+
+            /**
+             * 查询表单事件
+             */
+
+            $('#dataform').on('click', '.formSubmit', function () {
+                app.search();
+            }).on('click', '.formReset', function () {
+                app.reset();
+            });
+
+            /**
+             * 表格操作事件
+             */
+
+            $('#datatable').on('click', '.tableEdit', function () {
+                var id = $(this).data('id');
+                setTimeout(function () {
+                    location.href = '/product-item/' + id+ '/edit';
+                }, 500);
+            }).on('click', '.tableSellDown', function () {
+                var id = $(this).data('id');
+                if(window.confirm("确认下架？")){
+                    AjaxPut("/product-items/" + id + "/sellDown", {},function () {
+                        app.notifyOk('操作成功！')
+                        setTimeout(function () {
+                            location.href = '/product-item';
+                        }, 500);
+                    });
+                }
+            }).on('click', '.tableSellUp', function () {
+                var id = $(this).data('id');
+                if(window.confirm("确认上架？")){
+                    AjaxPut("/product-items/" + id + "/sellUp", {},function () {
+                        app.notifyOk('操作成功！')
+                        setTimeout(function () {
+                            location.href = '/product-item';
+                        }, 500);
+                    });
+                }
+            });
+        });
+    </script>
+</th:block>
+</html>

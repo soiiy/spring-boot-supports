@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.soiiy.security.config.SecurityContextConfiguration,\
+com.soiiy.security.config.SecurityWebMvcConfiguration,\
+com.soiiy.security.config.SecurityConfigurationOnMissingRedis,\
+com.soiiy.security.config.SecurityExceptionResolver
