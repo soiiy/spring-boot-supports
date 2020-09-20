@@ -1,7 +1,7 @@
 package com.soiiy.demo.web
 
-import com.soiiy.security.annotation.SecurityUser
-import com.soiiy.utils.error.RuntimeError
+import com.soiiy.platformsecurity.annotation.SecurityUser
+import com.soiiy.platform.utils.error.RuntimeError
 import org.springframework.web.bind.annotation.*
 
 @RestController

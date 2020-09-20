@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.soiiy.upload.UploadAutoConfiguration
+com.soiiy.platform.upload.UploadAutoConfiguration

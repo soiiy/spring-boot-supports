@@ -1,7 +1,7 @@
 package com.soiiy.demo.web
 
-import com.soiiy.security.SecurityManager
-import com.soiiy.utils.lang.StringUtil
+import com.soiiy.platform.security.SecurityManager
+import com.soiiy.platform.utils.lang.StringUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController {
 
     @Autowired
-    lateinit var manager: SecurityManager
+    lateinit var manager: _root_ide_package_.com.soiiy.platform.security.SecurityManager
 
     @PostMapping("/login")
     fun login(): AuthLoginResult {

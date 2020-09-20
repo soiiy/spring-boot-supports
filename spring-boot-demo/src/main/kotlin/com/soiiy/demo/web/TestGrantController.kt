@@ -1,8 +1,8 @@
 package com.soiiy.demo.web
 
-import com.soiiy.security.annotation.SecurityAny
-import com.soiiy.security.annotation.SecurityOnly
-import com.soiiy.security.annotation.SecurityUser
+import com.soiiy.platformsecurity.annotation.SecurityAny
+import com.soiiy.platformsecurity.annotation.SecurityOnly
+import com.soiiy.platformsecurity.annotation.SecurityUser
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

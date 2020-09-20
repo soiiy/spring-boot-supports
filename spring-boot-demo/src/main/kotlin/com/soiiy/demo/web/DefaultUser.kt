@@ -1,6 +1,6 @@
 package com.soiiy.demo.web
 
-import com.soiiy.security.SecurityTarget
+import com.soiiy.platformsecurity.SecurityTarget
 
 class DefaultUser(
     var id: String = "",

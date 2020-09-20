@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c785fd9-dcbc-4a79-8b03-40c137aab10e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/spring-boot-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-demo/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/spring-boot-mall-project">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/gradle-demo-plugin">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-web-starter">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-utils">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-upload-starter">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-security-starter">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-demo">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-mall-project">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-boot-supports" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin File" />
+        <option value="CSS File" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1XFp4Gk9KrMjbGJxroPZfWveU5q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/resources/templates/order" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/resources" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/resources/templates/page" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/resources/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/kotlin/com/soiiy/mall/module/trade/mapper" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/kotlin/com/soiiy/mall/module/trade/http" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/kotlin/com/soiiy/mall/module/trade/service" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/kotlin/com/soiiy/mall/module/trade/data" />
+      <recent name="$PROJECT_DIR$/spring-boot-mall-project/src/main/kotlin/com/soiiy/mall/module/product/http" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.soiiy.mall.module.trade.data" />
+      <recent name="com.soiiy.mall.module.trade.http" />
+      <recent name="com.soiiy.mall.module.wxma.http" />
+      <recent name="com.soiiy.mall.config" />
+      <recent name="com.soiiy.mall.module.trade.service" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.soiiy.platform.upload" />
+      <recent name="com.soiiy.mall.module.trade.http" />
+      <recent name="com.soiiy.mall.support" />
+      <recent name="com.soiiy.mall.config" />
+      <recent name="com.soiiy.mall.module.trade.mapper" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.soiiy.mall.module.trade.mapper" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.spring-boot-projects:spring-boot-mall-project [build]">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="spring-boot-projects:spring-boot-mall-project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-boot-mall-project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-boot-projects:spring-boot-mall-project [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-boot-mall-project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-boot-projects:spring-boot-mall-project [components]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-boot-mall-project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="components" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-boot-projects:spring-boot-web-starter [install]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-boot-web-starter" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="install" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MongoQueryRepositoryImplKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-projects.spring-boot-mall-project.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="MongoQueryRepositoryImplKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-projects.spring-boot-demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soiiy.demo.web.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootMallProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-projects.spring-boot-mall-project.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.soiiy.mall.SpringBootMallProjectApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.spring-boot-projects:spring-boot-web-starter [install]" />
+      <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [build]" />
+      <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [clean]" />
+      <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [components]" />
+      <item itemvalue="Kotlin.MongoQueryRepositoryImplKt" />
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.SpringBootMallProjectApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [build]" />
+        <item itemvalue="Kotlin.MongoQueryRepositoryImplKt" />
+        <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [components]" />
+        <item itemvalue="Gradle.spring-boot-projects:spring-boot-mall-project [clean]" />
+        <item itemvalue="Gradle.spring-boot-projects:spring-boot-web-starter [install]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c785fd9-dcbc-4a79-8b03-40c137aab10e" name="Default Changelist" comment="" />
+      <created>1580651504022</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580651504022</updated>
+      <workItem from="1580651506159" duration="2044000" />
+      <workItem from="1580719565251" duration="2170000" />
+      <workItem from="1581078701601" duration="892000" />
+      <workItem from="1581956613238" duration="590000" />
+      <workItem from="1582696201348" duration="1442000" />
+      <workItem from="1582731093888" duration="159000" />
+      <workItem from="1582874539358" duration="690000" />
+      <workItem from="1585040435151" duration="609000" />
+      <workItem from="1585105842805" duration="6764000" />
+      <workItem from="1585286429905" duration="2336000" />
+      <workItem from="1586921708552" duration="6425000" />
+      <workItem from="1587453271483" duration="947000" />
+      <workItem from="1588563076026" duration="2226000" />
+      <workItem from="1588687648741" duration="183000" />
+      <workItem from="1588747901603" duration="41834000" />
+      <workItem from="1588846634100" duration="8422000" />
+      <workItem from="1588928033396" duration="475000" />
+      <workItem from="1588992242984" duration="4730000" />
+      <workItem from="1589009565118" duration="676000" />
+      <workItem from="1589010415007" duration="1070000" />
+      <workItem from="1589011664886" duration="21391000" />
+      <workItem from="1589178418975" duration="35600000" />
+      <workItem from="1589292894415" duration="262000" />
+      <workItem from="1589293328247" duration="11861000" />
+      <workItem from="1589352976488" duration="3450000" />
+      <workItem from="1589383302451" duration="417000" />
+      <workItem from="1589428055329" duration="3243000" />
+      <workItem from="1589448577111" duration="14282000" />
+      <workItem from="1589527748005" duration="2757000" />
+      <workItem from="1589531464633" duration="1294000" />
+      <workItem from="1589566440654" duration="441000" />
+      <workItem from="1589629960888" duration="11000" />
+      <workItem from="1589875220732" duration="491000" />
+      <workItem from="1589885809070" duration="48000" />
+      <workItem from="1590128352200" duration="1449000" />
+      <workItem from="1590563332141" duration="720000" />
+      <workItem from="1590565016789" duration="453000" />
+      <workItem from="1590565797123" duration="13460000" />
+      <workItem from="1590633594710" duration="38000" />
+      <workItem from="1590634246323" duration="2413000" />
+      <workItem from="1590646335494" duration="1539000" />
+      <workItem from="1590651710448" duration="412000" />
+      <workItem from="1590654436335" duration="1529000" />
+      <workItem from="1590657922849" duration="3506000" />
+      <workItem from="1590683213440" duration="24000" />
+      <workItem from="1590683441919" duration="283000" />
+      <workItem from="1590730315962" duration="3733000" />
+      <workItem from="1590741392300" duration="1316000" />
+      <workItem from="1590746698784" duration="924000" />
+      <workItem from="1590999621155" duration="3470000" />
+      <workItem from="1591069632192" duration="7785000" />
+      <workItem from="1591162530582" duration="3142000" />
+      <workItem from="1591334016379" duration="11921000" />
+      <workItem from="1591372340380" duration="2109000" />
+      <workItem from="1591681270400" duration="1793000" />
+      <workItem from="1591691368982" duration="3495000" />
+      <workItem from="1592300378233" duration="1867000" />
+      <workItem from="1593505791912" duration="1175000" />
+      <workItem from="1593781143608" duration="405000" />
+      <workItem from="1593787066991" duration="30000" />
+      <workItem from="1593949747582" duration="49000" />
+      <workItem from="1594121215572" duration="283000" />
+      <workItem from="1600604456539" duration="2018000" />
+      <workItem from="1600607917605" duration="4806000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="565" y="261" key="#Project_Structure" timestamp="1600613362819">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="565" y="261" key="#Project_Structure/0.0.3440.1400@0.0.3440.1400" timestamp="1600613362819" />
+    <state x="795" y="487" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600613450079">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="795" y="487" key="#com.intellij.fileTypes.FileTypeChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1600613450079" />
+    <state x="1410" y="432" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600614729198">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1410" y="432" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1600614729198" />
+    <state x="1284" y="474" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1600615770095">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1284" y="474" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1600615770095" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1592372780129">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1592372780129" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1592372780128">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1592372780128" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1592372780127">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1592372780127" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1592372780128">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1592372780128" />
+    <state width="1238" height="212" key="GridCell.Tab.1.bottom" timestamp="1592372780093">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1592372780093" />
+    <state width="1238" height="212" key="GridCell.Tab.1.center" timestamp="1592372780091">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1592372780091" />
+    <state width="1238" height="212" key="GridCell.Tab.1.left" timestamp="1592372780091">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1592372780091" />
+    <state width="1238" height="212" key="GridCell.Tab.1.right" timestamp="1592372780092">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1592372780092" />
+    <state x="565" y="261" key="SettingsEditor" timestamp="1600606483771">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="565" y="261" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1600606483771" />
+    <state x="1381" y="284" width="646" height="804" key="find.popup" timestamp="1600615649448">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1381" y="284" width="646" height="804" key="find.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1600615649448" />
+    <state x="17" y="105" key="new project wizard" timestamp="1593508992452">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="17" y="105" key="new project wizard/0.0.1280.800@0.0.1280.800" timestamp="1593508992452" />
+  </component>
+</project>

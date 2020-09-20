@@ -5,5 +5,4 @@ include 'spring-boot-web-starter'
 include 'spring-boot-security-starter'
 include 'spring-boot-upload-starter'
 include 'spring-boot-demo'
-include 'spring-boot-mall-project'
 
